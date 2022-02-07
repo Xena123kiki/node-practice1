@@ -3,6 +3,9 @@ const fs = require('fs').promises;
 const url = require('url');
 const qs = require('querystring');
 
+const dotenv = require('dotenv');
+dotenv.config()
+
 const parseCookies = (cookie = '') =>
   cookie
     .split(';')
@@ -41,6 +44,6 @@ http.createServer(async (req, res) => {
     }
   }
 })
-  .listen(8084, () => {
-    console.log('8084번 포트에서 서버 대기 중입니다!');
+  .listen(process.env.PORT, () => {
+    console.log(process.env.PORT+'번 포트에서 서버 대기 중입니다!');
   });
